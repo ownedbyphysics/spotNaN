@@ -61,7 +61,6 @@ class SpotNan():
         self.vocab = settings['vocab']
         self.model_name = settings['model_name']
 
-
     def preprocessing(self):
         data = self.data
         nulls = self.nulls
@@ -85,7 +84,6 @@ class SpotNan():
         df = df.sample(frac=1).reset_index(drop=True)
         self.train_data = df
         return df.head(), df.shape
-
 
     def train(self, train_data=None):
         df = self.train_data
@@ -111,7 +109,6 @@ class SpotNan():
         loss, accuracy = model.evaluate(padded_docs, df['label'], verbose=1)
         print('Accuracy: %f' % (accuracy*100))
         self.model = model
-
 
     def save_model(self, model_name=None):
         model_name = model_name if model_name else self.model_name
